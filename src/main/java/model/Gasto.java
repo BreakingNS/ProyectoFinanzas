@@ -1,4 +1,4 @@
-package logica;
+package model;
 
 import java.util.Date;
 

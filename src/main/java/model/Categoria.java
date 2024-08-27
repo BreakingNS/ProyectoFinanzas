@@ -1,4 +1,4 @@
-package logica;
+package model;
 
 public class Categoria {
     private int id;

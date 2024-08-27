@@ -1,4 +1,4 @@
-package com.mycompany.proyectofinanzas;
+package app;
 
 public class ProyectoFinanzas {
 
