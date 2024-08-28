@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class FichaMensual {
     private int id;
     private int mes;
@@ -8,11 +10,13 @@ public class FichaMensual {
     private Integer gastosTotales;
     private Integer saldoFinal;
     private int usuarioId;
+    private List<Gasto> listaGastos;
+    private List<Ingreso> listaIngresos;
 
     public FichaMensual() {
     }
-    
-    public FichaMensual(int id, int mes, int anio, Integer ingresosTotales, Integer gastosTotales, Integer saldoFinal, int usuarioId) {
+
+    public FichaMensual(int id, int mes, int anio, Integer ingresosTotales, Integer gastosTotales, Integer saldoFinal, int usuarioId, List<Gasto> listaGastos, List<Ingreso> listaIngresos) {
         this.id = id;
         this.mes = mes;
         this.anio = anio;
@@ -20,6 +24,8 @@ public class FichaMensual {
         this.gastosTotales = gastosTotales;
         this.saldoFinal = saldoFinal;
         this.usuarioId = usuarioId;
+        this.listaGastos = listaGastos;
+        this.listaIngresos = listaIngresos;
     }
 
     public int getId() {
@@ -77,4 +83,22 @@ public class FichaMensual {
     public void setUsuarioId(int usuarioId) {
         this.usuarioId = usuarioId;
     }
+
+    public List<Gasto> getListaGastos() {
+        return listaGastos;
+    }
+
+    public List<Ingreso> getListaIngresos() {
+        return listaIngresos;
+    }
+
+    public void setListaGastos(List<Gasto> listaGastos) {
+        this.listaGastos = listaGastos;
+    }
+
+    public void setListaIngresos(List<Ingreso> listaIngresos) {
+        this.listaIngresos = listaIngresos;
+    }
+
+    
 }

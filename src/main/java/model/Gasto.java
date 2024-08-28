@@ -6,18 +6,18 @@ public class Gasto {
     private int id;
     private Integer monto;
     private String descripcion;
-    private String categoria;
     private Date fecha;
+    private Categoria categoria;
 
     public Gasto() {
     }
 
-    public Gasto(int id, Integer monto, String descripcion, String categoria, Date fecha) {
+    public Gasto(int id, Integer monto, String descripcion, Date fecha, Categoria categoria) {
         this.id = id;
         this.monto = monto;
         this.descripcion = descripcion;
-        this.categoria = categoria;
         this.fecha = fecha;
+        this.categoria = categoria;
     }
 
     public int getId() {
@@ -32,7 +32,7 @@ public class Gasto {
         return descripcion;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
@@ -52,7 +52,7 @@ public class Gasto {
         this.descripcion = descripcion;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 

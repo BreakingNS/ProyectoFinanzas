@@ -13,11 +13,14 @@ public class ConexionDateBase {
     public String url = "jdbc:h2:~/test";
     public String driveDB = "org.h2.Driver";
     
-    public Connection getConexionDBH2() throws ClassNotFoundException{
+    public Connection getConexionDBH2() throws ClassNotFoundException {
         Connection connection = null;
         try {
             Class.forName(driveDB);
             connection = DriverManager.getConnection(url, username, password);
+            
+            
+            
             System.out.println("Conexion exitosa!");
         } catch (SQLException ex) {
             Logger.getLogger(ConexionDateBase.class.getName()).log(Level.SEVERE, null, ex);
@@ -26,4 +29,16 @@ public class ConexionDateBase {
         return connection;
     }
     
+    public void cerrarConexion(Connection connection) {
+        if (connection != null) {
+            try {
+                connection.close();
+                System.out.println("Conexion cerrada con exito!");
+            } catch (SQLException ex) {
+                Logger.getLogger(ConexionDateBase.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Error al cerrar la conexion");
+            }
+        }
+    }
 }
+

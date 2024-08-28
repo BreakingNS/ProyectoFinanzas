@@ -16,8 +16,8 @@ public class CategoriasDAOImpl implements CategoriasDAO{
     private Connection connection = null;
     private String SENTENCIA_ELIMINAR_CATEGORIA = "DELETE FROM Finanzas.categoria WHERE id = ?";
     private String SENTENCIA_OBTENER_CATEGORIA = "SELECT * FROM Finanzas.categoria";
-    private String SENTENCIA_CREAR_CATEGORIA = "INSERT INTO Finanzas.categoria (nombre) VALUES ( ? )";
-    private String SENTENCIA_ACTUALIZAR_CATEGORIA = "UPDATE Finanzas.categoria SET nombre = ? WHERE id = ?";
+    private String SENTENCIA_CREAR_CATEGORIA = "INSERT INTO Finanzas.categoria (nombre, tipo) VALUES ( ? , ? )";
+    private String SENTENCIA_ACTUALIZAR_CATEGORIA = "UPDATE Finanzas.categoria SET nombre = ?, tipo = ? WHERE id = ?";
 
 
     public CategoriasDAOImpl(Connection connection) {
@@ -45,9 +45,10 @@ public class CategoriasDAOImpl implements CategoriasDAO{
             
             while (categoria_Resultado.next()){
                 String nombreCategoria = categoria_Resultado.getString("nombre");
+                String tipoCategoria = categoria_Resultado.getString("tipo");
                 int idCategoria = categoria_Resultado.getInt("id");
                 
-                Categoria categoria = new Categoria(idCategoria, nombreCategoria);
+                Categoria categoria = new Categoria(idCategoria, nombreCategoria, tipoCategoria);
                 
                 listaCategorias.add(categoria);
             }
@@ -64,6 +65,7 @@ public class CategoriasDAOImpl implements CategoriasDAO{
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SENTENCIA_CREAR_CATEGORIA);
             preparedStatement.setString(1, categoria.getNombre());
+            preparedStatement.setString(2, categoria.getTipo());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CategoriasDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,7 +77,8 @@ public class CategoriasDAOImpl implements CategoriasDAO{
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SENTENCIA_ACTUALIZAR_CATEGORIA);
             preparedStatement.setString(1, categoria.getNombre());
-            preparedStatement.setInt(2, id);
+            preparedStatement.setString(2, categoria.getTipo());
+            preparedStatement.setInt(3, id);
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CategoriasDAOImpl.class.getName()).log(Level.SEVERE, null, ex);

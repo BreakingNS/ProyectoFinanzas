@@ -1,21 +1,25 @@
 package model;
 
+import java.util.List;
+
 public class ResumenAnual {
     private int id;
     private Integer anio;
     private Integer ingresosAnuales;
     private Integer gastosAnuales;
     private Integer saldoAnual;
+    private List<FichaMensual> listaFichasMensuales;
 
     public ResumenAnual() {
     }
 
-    public ResumenAnual(int id, Integer anio, Integer ingresosAnuales, Integer gastosAnuales, Integer saldoAnual) {
+    public ResumenAnual(int id, Integer anio, Integer ingresosAnuales, Integer gastosAnuales, Integer saldoAnual, List<FichaMensual> listaFichasMensuales) {
         this.id = id;
         this.anio = anio;
         this.ingresosAnuales = ingresosAnuales;
         this.gastosAnuales = gastosAnuales;
         this.saldoAnual = saldoAnual;
+        this.listaFichasMensuales = listaFichasMensuales;
     }
 
     public int getId() {
@@ -56,5 +60,13 @@ public class ResumenAnual {
 
     public void setSaldoAnual(Integer saldoAnual) {
         this.saldoAnual = saldoAnual;
+    }
+
+    public List<FichaMensual> getListaFichasMensuales() {
+        return listaFichasMensuales;
+    }
+
+    public void setListaFichasMensuales(List<FichaMensual> listaFichasMensuales) {
+        this.listaFichasMensuales = listaFichasMensuales;
     }
 }
